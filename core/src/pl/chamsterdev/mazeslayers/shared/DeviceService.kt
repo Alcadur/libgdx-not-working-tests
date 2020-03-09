@@ -1,10 +1,9 @@
 package pl.chamsterdev.mazeslayers.shared
 
 import com.badlogic.gdx.Gdx
-import javax.inject.Singleton
+import javax.inject.Inject
 
-@Singleton
-class DeviceService {
+class DeviceService @Inject constructor( ) {
     val deviceWidth = Gdx.graphics.width
     val deviceWidthF = deviceWidth.toFloat()
     val deviceHeight = Gdx.graphics.height

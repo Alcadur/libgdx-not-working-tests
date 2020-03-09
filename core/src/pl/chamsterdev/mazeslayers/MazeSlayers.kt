@@ -1,37 +1,32 @@
 package pl.chamsterdev.mazeslayers
 
-import com.badlogic.gdx.ApplicationAdapter
-import com.badlogic.gdx.Gdx
-import com.badlogic.gdx.graphics.GL20
-import com.badlogic.gdx.graphics.Texture
-import com.badlogic.gdx.graphics.g2d.SpriteBatch
-import pl.chamsterdev.mazeslayers.shared.DaggerSharedComponent
-import pl.chamsterdev.mazeslayers.shared.DeviceService
+import com.badlogic.gdx.Game
+import pl.chamsterdev.mazeslayers.dagger.DI
+import pl.chamsterdev.mazeslayers.firstScreens.SplashScreen
+import pl.chamsterdev.mazeslayers.shared.Asset
+import pl.chamsterdev.mazeslayers.shared.AssetsService
+import pl.chamsterdev.mazeslayers.shared.GameService
 import javax.inject.Inject
 
-class MazeSlayers : ApplicationAdapter() {
-    var batch: SpriteBatch? = null
-    var img: Texture? = null
+class MazeSlayers : Game() {
+    @Inject
+    lateinit var assetsService: AssetsService
 
     @Inject
-    lateinit var deviceService: DeviceService
+    lateinit var gameService: GameService
 
     override fun create() {
-        DaggerSharedComponent.create().inject(this)
-        batch = SpriteBatch()
-        img = Texture("maze-slayers-splash-screen.png")
+        DI.shared.inject(this)
+        gameService.game = this
+        assetsService.load(Asset.LOGO)
+        this.setScreen(SplashScreen())
     }
 
     override fun render() {
-        Gdx.gl.glClearColor(1f, 0f, 0f, 1f)
-        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT)
-        batch!!.begin()
-        batch!!.draw(img, 0f, 0f, deviceService.deviceWidthF, deviceService.deviceHeightF)
-        batch!!.end()
+        super.render()
     }
 
-    override fun dispose() {
-        batch!!.dispose()
-        img!!.dispose()
-    }
+//    override fun dispose() {
+//        super.dispose()
+//    }
 }
