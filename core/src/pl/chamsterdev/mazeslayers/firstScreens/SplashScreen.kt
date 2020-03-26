@@ -1,32 +1,21 @@
 package pl.chamsterdev.mazeslayers.firstScreens
 
 import com.badlogic.gdx.Gdx
-import com.badlogic.gdx.ScreenAdapter
 import com.badlogic.gdx.graphics.GL20
 import com.badlogic.gdx.graphics.Texture
 import com.badlogic.gdx.graphics.g2d.SpriteBatch
-import pl.chamsterdev.mazeslayers.dagger.DI
+import pl.chamsterdev.mazeslayers.screens.BaseScreen
 import pl.chamsterdev.mazeslayers.shared.Asset
-import pl.chamsterdev.mazeslayers.shared.AssetsService
-import pl.chamsterdev.mazeslayers.shared.DeviceService
-import pl.chamsterdev.mazeslayers.shared.GameService
-import javax.inject.Inject
 
-class SplashScreen : ScreenAdapter() {
+class SplashScreen : BaseScreen() {
     lateinit var batch: SpriteBatch
     var img: Texture? = null
 
-    @Inject
-    lateinit var deviceService: DeviceService
-
-    @Inject
-    lateinit var assetsService: AssetsService
-
-    @Inject
-    lateinit var gameService: GameService
+    init {
+        this.inject()
+    }
 
     override fun show() {
-        DI.shared.inject(this)
         batch = gameService.batch
         img = assetsService.getTexture(Asset.LOGO)
     }
