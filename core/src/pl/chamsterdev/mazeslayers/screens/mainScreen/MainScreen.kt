@@ -15,6 +15,7 @@ class MainScreen : BaseScreen() {
     private val gameSelector = MenuSelector()
     private val characterSelector = MenuSelector()
     private val startButton: TextButton
+    private val mazeTypeSelector = MenuSelector()
 
     init {
         this.inject()
@@ -24,13 +25,9 @@ class MainScreen : BaseScreen() {
 
         setupGameSelector()
         setupCharacterSelector()
+        setupMazeTypeSelector()
         startButton = createStartButton()
-
-        menuTable.add(gameSelector)
-        menuTable.row().padTop(100f)
-        menuTable.add(characterSelector)
-        menuTable.row()
-        menuTable.add(startButton)
+        setupMainTable()
 
         stage.addActor(menuTable)
     }
@@ -48,12 +45,28 @@ class MainScreen : BaseScreen() {
                 .add(Asset.CHARACTER_ICON_MAG, "Mag")
     }
 
+    private fun setupMazeTypeSelector() {
+        mazeTypeSelector.add(Asset.MAZE_TYPE_SQUARE, "Square")
+    }
+
     private fun createStartButton(): TextButton {
         val style = TextButton.TextButtonStyle()
         style.font = BitmapFont(Gdx.files.internal("font.fnt"))
         style.font.region.texture.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear)
         style.font.data.scale(3.5f)
         return TextButton("Start", style)
+    }
+
+    private fun setupMainTable() {
+        val rowTopPad = 75f
+
+        menuTable.add(gameSelector)
+        menuTable.row().padTop(rowTopPad)
+        menuTable.add(characterSelector)
+        menuTable.row().padTop(rowTopPad)
+        menuTable.add(mazeTypeSelector)
+        menuTable.row().padTop(rowTopPad)
+        menuTable.add(startButton)
     }
 
     override fun render(delta: Float) {

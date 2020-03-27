@@ -14,7 +14,7 @@ import pl.chamsterdev.mazeslayers.shared.FontService
 import javax.inject.Inject
 
 class MenuSelector (
-        private val selectionWidth: Float = 500f,
+        private val selectionWidth: Float = 375f,
         private val selectionHeight: Float = selectionWidth
 ) : Table() {
 

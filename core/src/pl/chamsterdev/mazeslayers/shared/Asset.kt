@@ -15,6 +15,7 @@ enum class Asset (val path: String, val clazz: Class<*>){
     CHARACTER_ICON_PALADIN("main-screen/character-icon-paladin.png", Texture::class.java),
     CHARACTER_ICON_THIEF("main-screen/character-icon-thief.png", Texture::class.java),
     CHARACTER_ICON_VAMPIRE("main-screen/character-icon-vampire.png", Texture::class.java),
+    MAZE_TYPE_SQUARE("main-screen/maze-type-square.png", Texture::class.java),
 
     // Fonts
     BASE_FONT("font.fnt", BitmapFont::class.java)
@@ -33,7 +34,8 @@ enum class Asset (val path: String, val clazz: Class<*>){
                     CHARACTER_ICON_PALADIN,
                     CHARACTER_ICON_THIEF,
                     CHARACTER_ICON_VAMPIRE,
-                    BASE_FONT
+                    BASE_FONT,
+                    MAZE_TYPE_SQUARE
             )
         }
     }
