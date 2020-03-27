@@ -36,16 +36,16 @@ class MainScreen : BaseScreen() {
     }
 
     private fun setupGameSelector() {
-        gameSelector.add(Asset.GAME_ESCAPE)
-                .add(Asset.GAME_TOWER)
-                .add(Asset.GAME_MANSIONS)
+        gameSelector.add(Asset.GAME_ESCAPE, "Escape")
+                .add(Asset.GAME_TOWER, "Tower")
+                .add(Asset.GAME_MANSIONS, "Mansion")
     }
 
     private fun setupCharacterSelector() {
-        characterSelector.add(Asset.CHARACTER_ICON_VAMPIRE)
-                .add(Asset.CHARACTER_ICON_THIEF)
-                .add(Asset.CHARACTER_ICON_PALADIN)
-                .add(Asset.CHARACTER_ICON_MAG)
+        characterSelector.add(Asset.CHARACTER_ICON_VAMPIRE, "Vampire")
+                .add(Asset.CHARACTER_ICON_THIEF, "Thief")
+                .add(Asset.CHARACTER_ICON_PALADIN, "Paladin")
+                .add(Asset.CHARACTER_ICON_MAG, "Mag")
     }
 
     private fun createStartButton(): TextButton {

@@ -12,4 +12,6 @@ interface SharedComponent {
     fun inject(app: MazeSlayers)
     fun inject(screen: BaseScreen)
     fun inject(menuSelector: MenuSelector)
+    fun inject(fontService: FontService)
+    fun inject(assetsHelper: AssetsHelper)
 }

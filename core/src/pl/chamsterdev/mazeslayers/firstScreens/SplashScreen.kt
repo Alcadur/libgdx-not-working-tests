@@ -17,7 +17,7 @@ class SplashScreen : BaseScreen() {
 
     override fun show() {
         batch = gameService.batch
-        img = assetsService.getTexture(Asset.LOGO)
+        img = assetsHelper.getTextureFromAsset(Asset.LOGO)
     }
 
     override fun render(delta: Float) {

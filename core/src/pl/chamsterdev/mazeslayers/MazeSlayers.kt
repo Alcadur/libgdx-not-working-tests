@@ -1,24 +1,28 @@
 package pl.chamsterdev.mazeslayers
 
 import com.badlogic.gdx.Game
+import com.badlogic.gdx.assets.AssetManager
 import pl.chamsterdev.mazeslayers.dagger.DI
 import pl.chamsterdev.mazeslayers.screens.mainScreen.MainScreen
-import pl.chamsterdev.mazeslayers.shared.AssetsService
+import pl.chamsterdev.mazeslayers.shared.AssetsHelper
 import pl.chamsterdev.mazeslayers.shared.GameService
 import javax.inject.Inject
 
 class MazeSlayers : Game() {
     @Inject
-    lateinit var assetsService: AssetsService
+    lateinit var gameService: GameService
 
     @Inject
-    lateinit var gameService: GameService
+    lateinit var assetManager: AssetManager
+
+    @Inject
+    lateinit var assetsHelper: AssetsHelper
 
     override fun create() {
         DI.shared.inject(this)
         gameService.game = this
-        assetsService.loadAllAssets()
-//        this.setScreen(SplashScreen())
+        assetsHelper.loadAllAssets()
+
         this.setScreen(MainScreen())
     }
 
@@ -27,6 +31,6 @@ class MazeSlayers : Game() {
 //    }
 
     override fun dispose() {
-        assetsService.disposeAll()
+        assetManager.dispose()
     }
 }
